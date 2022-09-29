@@ -13,7 +13,7 @@ module.exports = {
 	},
 	plugins: [
 		new HtmlWebpackPlugin({
-			title: 'Weather'
+			template: './src/template.html'
 		})
 	],
 	module: {
