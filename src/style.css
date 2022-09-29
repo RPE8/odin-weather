@@ -1,0 +1,93 @@
+@font-face {
+  font-family: 'Material Icons';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Material Icons'),
+    local('MaterialIcons-Regular'),
+    url(./assets/icons/MaterialIcons-Regular.ttf)
+}
+
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;  /* Preferred icon size */
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Support for IE. */
+  font-feature-settings: 'liga';
+}
+
+.material-icons.md-18 { font-size: 18px; }
+.material-icons.md-24 { font-size: 24px; }
+.material-icons.md-36 { font-size: 36px; }
+.material-icons.md-48 { font-size: 48px; }
+
+*, *::before, *::after {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+html, body {
+	height: 100%
+}
+
+body {
+	background: rgb(7,5,38);
+	background: -moz-linear-gradient(0deg, rgba(7,5,38,1) 67%, rgba(2,2,79,1) 100%);
+	background: -webkit-linear-gradient(0deg, rgba(7,5,38,1) 67%, rgba(2,2,79,1) 100%);
+	background: linear-gradient(0deg, rgba(7,5,38,1) 67%, rgba(2,2,79,1) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#070526",endColorstr="#02024f",GradientType=1);
+	padding: 1rem;
+	display: flex;
+	justify-content: center;
+	align-items: start;
+}
+
+section {
+	margin-top: 20vh;
+}
+
+.weather-form {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.search-field {
+	display: flex;
+}
+
+.search-field__search-input {
+	background-color: unset;
+	border: 0;
+	border-bottom: solid 3px white;
+}
+
+.search-field__search-button {
+	background-color: unset;
+	border: 0;
+	border-bottom: solid 3px white;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.search-field__search-button > span {
+	color: white;
+}

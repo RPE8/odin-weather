@@ -1,3 +1,4 @@
-import { Axios } from 'axios';
+import { Axios as axios } from 'axios';
+import './style.css';
 
-console.log(Axios);
+console.log(axios);
