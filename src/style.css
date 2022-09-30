@@ -77,6 +77,11 @@ section {
 	background-color: unset;
 	border: 0;
 	border-bottom: solid 3px white;
+	color: white;
+}
+
+.search-field__search-input:focus-visible {
+	outline: none;
 }
 
 .search-field__search-button {
