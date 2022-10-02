@@ -84,6 +84,10 @@ section {
 	outline: none;
 }
 
+.search-field__search-input.error,  .search-field__search-input.error + .search-field__search-button{
+	border-bottom: solid 3px rgb(80, 0, 0);
+}
+
 .search-field__search-button {
 	background-color: unset;
 	border: 0;
