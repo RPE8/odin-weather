@@ -71,7 +71,6 @@ const onSearchButtonClick = async (event: Event): Promise<void> => {
 
 	searchInput.setCustomValidity('');
 	try {
-		const test = await loadDataByLocation(value);
 		const {
 			data: {
 				main: { temp, humidity, pressure }
