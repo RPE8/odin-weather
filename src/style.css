@@ -43,6 +43,15 @@
 	box-sizing: border-box;
 }
 
+* {
+	--color-1: white;
+	--color-2: rgb(80, 0, 0);
+}
+
+.invisible {
+	visibility: hidden;
+}
+
 html, body {
 	height: 100%
 }
@@ -76,8 +85,8 @@ section {
 .search-field__search-input {
 	background-color: unset;
 	border: 0;
-	border-bottom: solid 3px white;
-	color: white;
+	border-bottom: solid 3px var(--color-1);
+	color: var(--color-1);
 }
 
 .search-field__search-input:focus-visible {
@@ -85,18 +94,50 @@ section {
 }
 
 .search-field__search-input.error,  .search-field__search-input.error + .search-field__search-button{
-	border-bottom: solid 3px rgb(80, 0, 0);
+	border-bottom: solid 3px var(--color-2);
 }
 
 .search-field__search-button {
 	background-color: unset;
 	border: 0;
-	border-bottom: solid 3px white;
+	border-bottom: solid 3px var(--color-1);
 	display: flex;
 	align-items: center;
 	justify-content: center;
 }
 
 .search-field__search-button > span {
-	color: white;
+	color: var(--color-1);
+}
+
+.weather-card {
+	margin-top: 40px;
+	color: var(--color-1);
+	display: grid;
+	grid-template-columns: auto auto;
+	grid-template-rows: auto auto auto;
+	row-gap: 1rem;
+}
+
+.weather-card__location-info {
+	grid-row: 1 / -1;
+}
+
+.weather-card__location {
+	font-size: 1.5rem;
+}
+
+.weather-card__main-info {
+	grid-column: 1;
+	display: flex;
+	align-items: center;
+}
+
+.weather-card__additional-info {
+	display: grid;
+	justify-content: end;
+}
+
+.weather-card__pressure-units {
+	font-size: .7rem;
 }
