@@ -3,6 +3,16 @@ import './style.css';
 
 console.log(axios);
 
+type TWeatherResponse = {
+	data: {
+		main: {
+			temp: number;
+			humidity: number;
+			pressure: number;
+		};
+	};
+};
+
 const requester = axios.create({
 	baseURL: 'https://api.openweathermap.org/'
 });
@@ -48,8 +58,12 @@ const onSearchButtonClick = async (event: Event): Promise<void> => {
 
 	searchInput.setCustomValidity('');
 	try {
-		const response = await loadDataByLocation(value);
-		console.log(response);
+		const {
+			data: {
+				main: { temp, humidity, pressure }
+			}
+		} = await loadDataByLocation(value);
+		updateWeatherCard(temp, humidity, pressure);
 	} catch (err) {
 		searchInput.setCustomValidity('Invalid location');
 		showError(searchInput);
@@ -71,7 +85,7 @@ const removeError = (input: HTMLInputElement): void => {
 	input.classList.remove('error');
 };
 
-const loadDataByLocation = (location: string) => {
+const loadDataByLocation = (location: string): Promise<TWeatherResponse> => {
 	return requester.get('data/2.5/weather', {
 		params: {
 			q: location,
@@ -79,6 +93,12 @@ const loadDataByLocation = (location: string) => {
 		}
 	});
 };
+
+const updateWeatherCard = (
+	temp: number,
+	humidity: number,
+	pressure: number
+) => {};
 
 if (searchInput)
 	searchInput.addEventListener('input', debounce(onSearchInputLiveChange));
