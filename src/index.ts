@@ -1,7 +1,11 @@
-import { Axios as axios } from 'axios';
+import { default as axios } from 'axios';
 import './style.css';
 
 console.log(axios);
+
+const requester = axios.create({
+	baseURL: 'https://api.openweathermap.org/'
+});
 
 const searchInput = document.querySelector(
 	'.search-field__search-input'
@@ -29,18 +33,30 @@ const onSearchInputLiveChange = (event: Event) => {
 	}
 };
 
-const onSearchButtonClick = (event: Event): void => {
+const onSearchButtonClick = async (event: Event): Promise<void> => {
 	event.preventDefault();
 
 	if (!searchInput) return;
 
 	const value = searchInput.value.trim();
 	if (!value || !value.length) {
-		searchInput.setCustomValidity('Error');
+		searchInput.setCustomValidity('Invalid location');
 		showError(searchInput);
+		searchInput.reportValidity();
+		return Promise.reject();
 	}
 
 	searchInput.setCustomValidity('');
+	try {
+		const response = await loadDataByLocation(value);
+		console.log(response);
+	} catch (err) {
+		searchInput.setCustomValidity('Invalid location');
+		showError(searchInput);
+		searchInput.reportValidity();
+		return Promise.reject();
+	}
+	return Promise.resolve();
 };
 
 const showError = (input: HTMLInputElement): void => {
@@ -53,6 +69,15 @@ const removeError = (input: HTMLInputElement): void => {
 	if (!input) return;
 
 	input.classList.remove('error');
+};
+
+const loadDataByLocation = (location: string) => {
+	return requester.get('data/2.5/weather', {
+		params: {
+			q: location,
+			appid: 'e99cfc6ee3bdb8cc06ee485de8187f28'
+		}
+	});
 };
 
 if (searchInput)
