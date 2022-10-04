@@ -38,7 +38,7 @@ const pressureEl = weatherCard.querySelector(
 ) as HTMLSpanElement;
 
 function debounce(fn: (...args: unknown[]) => unknown, timeout = 300) {
-	let timer: number;
+	let timer: NodeJS.Timeout;
 	return (...args: unknown[]) => {
 		clearTimeout(timer);
 		timer = setTimeout(() => {
@@ -108,7 +108,7 @@ const loadDataByLocation = (location: string): Promise<TWeatherResponse> => {
 	});
 };
 
-const FToC = (temp: number): number => {
+export const FToC = (temp: number): number => {
 	return Math.round((temp - 32) / 1.8);
 };
 
