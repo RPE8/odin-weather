@@ -1,3 +1,4 @@
+import { FToC } from './utils';
 import { default as axios } from 'axios';
 import './style.css';
 
@@ -27,13 +28,13 @@ const weatherCard = document.querySelector('.weather-card') as HTMLDivElement;
 const locationEl = document.querySelector(
 	'.weather-card__location'
 ) as HTMLSpanElement;
-const temperatureEl = weatherCard.querySelector(
+const temperatureEl = weatherCard?.querySelector(
 	'.weather-card__temperature'
 ) as HTMLSpanElement;
-const humidityEl = weatherCard.querySelector(
+const humidityEl = weatherCard?.querySelector(
 	'.weather-card__humidity'
 ) as HTMLSpanElement;
-const pressureEl = weatherCard.querySelector(
+const pressureEl = weatherCard?.querySelector(
 	'.weather-card__pressure'
 ) as HTMLSpanElement;
 
@@ -106,10 +107,6 @@ const loadDataByLocation = (location: string): Promise<TWeatherResponse> => {
 			units: 'metric'
 		}
 	});
-};
-
-export const FToC = (temp: number): number => {
-	return Math.round((temp - 32) / 1.8);
 };
 
 const updateWeatherCard = (
